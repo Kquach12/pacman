@@ -26,7 +26,7 @@ body{
 }
 
 .coin{
-    background-image: url('coin.png');
+    background-image: url('images/coin.png');
     background-size: 15px;
     background-repeat: no-repeat;
     background-position: center;
@@ -37,7 +37,7 @@ body{
 }
 
 #pacman{
-    background-image: url('pacman.gif');
+    background-image: url('images/pacman.gif');
     background-size: 85%;
     background-repeat: no-repeat;
     background-position: center;

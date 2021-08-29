@@ -58,15 +58,19 @@ document.onkeydown = function(e){
     console.log(e);
     if (e.key === "ArrowRight" && world[pacmanPosition.y][pacmanPosition.x + 1] !== 2){
         pacmanPosition.x += 1;
+        document.getElementById("pacman").style.transform = "rotate(0deg)"
     }
     if (e.key === "ArrowLeft" && world[pacmanPosition.y][pacmanPosition.x - 1] !== 2){
         pacmanPosition.x -= 1;
+        document.getElementById("pacman").style.transform = "rotate(180deg)"
     }
     if (e.key === "ArrowDown" && world[pacmanPosition.y + 1][pacmanPosition.x] !== 2){
         pacmanPosition.y += 1;
+        document.getElementById("pacman").style.transform = "rotate(90deg)"
     }
     if (e.key === "ArrowUp" && world[pacmanPosition.y - 1][pacmanPosition.x] !== 2){
         pacmanPosition.y -= 1;
+        document.getElementById("pacman").style.transform = "rotate(270deg)"
     }
 
     if (world[pacmanPosition.y][pacmanPosition.x] == 1){
