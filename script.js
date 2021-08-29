@@ -1,28 +1,31 @@
-let world = [
+let world = [                                           //World Array
     [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
-    [2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+    [2,0,0,2,1,1,1,1,1,1,1,1,1,1,1,1,2],
+    [2,1,1,2,1,0,2,0,1,0,0,3,2,3,0,1,2],
+    [2,1,1,2,2,2,2,0,1,0,0,0,2,1,0,1,2],
+    [2,1,1,1,1,0,1,0,1,0,0,0,2,2,2,1,2],
     [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
     [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
-    [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
-    [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
-    [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
-    [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
-    [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
-    [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
-    [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
-    [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
-    [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
+    [2,1,1,1,1,0,1,3,1,0,0,0,1,1,0,1,2],
+    [2,1,1,1,1,0,1,3,1,0,0,0,1,1,0,1,2],
+    [2,1,1,1,2,2,2,2,2,2,2,2,2,1,0,1,2],
+    [2,1,1,1,2,0,1,0,1,3,0,0,2,1,0,1,2],
+    [2,1,1,1,2,0,1,0,1,0,0,0,2,1,0,1,2],
+    [2,1,1,1,2,2,2,2,1,0,2,2,2,1,0,1,2],
     [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
     [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
 ]
 
 
 
-function displayWorld(){
+function displayWorld(){                                //Build World
     let output ="";
     for (var i = 0; i < world.length; i++){
         output += "\n<div class = 'row'>"
         for (var j = 0; j < world[i].length; j++){
+            if (world[i][j] === 3){
+                output += "\n\t<div class = 'cherry'></div>"
+            }
             if (world[i][j] === 2){
                 output += "\n\t<div class = 'brick'></div>"
             }
@@ -40,7 +43,7 @@ function displayWorld(){
 
 displayWorld()
 
-var pacmanPosition = {
+var pacmanPosition = {                                      //Pacman coordinates
     x: 1,
     y: 1
 };
@@ -54,7 +57,7 @@ movePacman();
 
 let score = 0
 
-document.onkeydown = function(e){
+document.onkeydown = function(e){                               //Moving Pacman
     console.log(e);
     if (e.key === "ArrowRight" && world[pacmanPosition.y][pacmanPosition.x + 1] !== 2){
         pacmanPosition.x += 1;
@@ -73,9 +76,15 @@ document.onkeydown = function(e){
         document.getElementById("pacman").style.transform = "rotate(270deg)"
     }
 
-    if (world[pacmanPosition.y][pacmanPosition.x] == 1){
+    if (world[pacmanPosition.y][pacmanPosition.x] == 1){                //Update Score
         world[pacmanPosition.y][pacmanPosition.x] = 0;
         score +=1
+        document.getElementById("score").innerText = score
+        displayWorld();
+    }
+    if (world[pacmanPosition.y][pacmanPosition.x] == 3){
+        world[pacmanPosition.y][pacmanPosition.x] = 0;
+        score +=5
         document.getElementById("score").innerText = score
         displayWorld();
     }

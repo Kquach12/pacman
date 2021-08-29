@@ -32,6 +32,13 @@ body{
     background-position: center;
 }
 
+.cherry{
+    background-image: url('images/cherry.png');
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .empty{
     background-color: black;
 }
