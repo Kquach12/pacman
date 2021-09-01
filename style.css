@@ -8,6 +8,18 @@ body{
     background-color: black;
 }
 
+button{
+    width: 100px;
+    height: 45px;
+    background-color: rgb(252, 223, 61);
+    color: blue;
+    border: 2px solid blue;
+    font-weight: bold;
+    position: absolute;
+    top: 200px;
+    left: 600px;
+}
+
 #world{
     width: 510px;
 }

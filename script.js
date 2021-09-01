@@ -1,3 +1,10 @@
+beginGame = false
+
+function startGame(element){
+    beginGame = true
+    element.style.display = "none"
+}
+
 let world = [                                           //World Array
     [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
     [2,0,0,2,1,1,1,1,1,1,1,1,1,1,1,1,2],
@@ -56,10 +63,10 @@ function movePacman(){
 movePacman();
 
 let enemies = [
-    {x: 4, y: 10},
-    {x: 4, y: 11},
-    {x: 10, y: 10},
-    {x: 10, y: 11}
+    {x: 5, y: 10},
+    {x: 5, y: 11},
+    {x: 11, y: 10},
+    {x: 11, y: 11}
 ]
 
 
@@ -112,6 +119,9 @@ let score = 0
 
 document.onkeydown = function(e){                               //Moving Pacman
     console.log(e);
+    if (beginGame == false){
+        return
+    } else
     if (e.key === "ArrowRight" && world[pacmanPosition.y][pacmanPosition.x + 1] !== 2){
         pacmanPosition.x += 1;
         document.getElementById("pacman").style.transform = "rotate(0deg)"
@@ -149,5 +159,3 @@ function gameLoop(){
     moveEnemy()
     setTimeout(gameLoop, 400)
 }
-
-gameLoop()
