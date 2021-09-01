@@ -8,7 +8,7 @@ let world = [                                           //World Array
     [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
     [2,1,1,1,1,0,1,3,1,0,0,0,1,1,0,1,2],
     [2,1,1,1,1,0,1,3,1,0,0,0,1,1,0,1,2],
-    [2,1,1,1,2,2,2,2,2,2,2,2,2,1,0,1,2],
+    [2,1,1,1,2,2,2,0,0,0,2,2,2,1,0,1,2],
     [2,1,1,1,2,0,1,0,1,3,0,0,2,1,0,1,2],
     [2,1,1,1,2,0,1,0,1,0,0,0,2,1,0,1,2],
     [2,1,1,1,2,2,2,0,1,0,2,2,2,1,0,1,2],
@@ -56,9 +56,10 @@ function movePacman(){
 movePacman();
 
 let enemies = [
+    {x: 4, y: 10},
+    {x: 4, y: 11},
     {x: 10, y: 10},
-    {x: 11, y: 10},
-    {x: 9, y: 10}
+    {x: 10, y: 11}
 ]
 
 
@@ -73,7 +74,6 @@ function drawEnemy(){
 drawEnemy()
 
 let allEnemies = document.querySelectorAll('.ghost')
-console.log(allEnemies)
 
 function positionEnemy(){
     for (let i = 0; i < allEnemies.length; i++){       
@@ -84,6 +84,30 @@ function positionEnemy(){
 
 positionEnemy()
 
+function moveEnemy(){
+
+    for (var i = 0; i < enemies.length; i++){
+        var randomMovement = Math.floor(Math.random() * (4 - Math.random()));
+        if(world[enemies[i]['y']][enemies[i]['x'] - 1] !== 2 && randomMovement < 1){
+            enemies[i]['x'] -= 1;
+    
+        } else
+            if(world[enemies[i]['y'] - 1][enemies[i]['x']] !== 2 && randomMovement < 2){
+                enemies[i]['y'] -= 1;
+    
+        }
+        else
+            if(world[enemies[i]['y']][enemies[i]['x'] + 1] !== 2 && randomMovement < 3){
+                enemies[i]['x'] += 1;
+    
+        } else
+            if(world[enemies[i]['y'] + 1][enemies[i]['x']] !== 2 && randomMovement < 4){
+                enemies[i]['y'] += 1;
+    
+        } 
+    }
+    positionEnemy()
+}
 let score = 0
 
 document.onkeydown = function(e){                               //Moving Pacman
@@ -120,3 +144,10 @@ document.onkeydown = function(e){                               //Moving Pacman
 
     movePacman()
 }
+
+function gameLoop(){
+    moveEnemy()
+    setTimeout(gameLoop, 400)
+}
+
+gameLoop()
