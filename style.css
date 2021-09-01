@@ -53,6 +53,16 @@ body{
     position: absolute;
 }
 
+.ghost{
+    background-image: url('images/ghost-pink.png');
+    background-size: 85%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+}
+
 #score{
     color: white;
     border: 2px solid white;

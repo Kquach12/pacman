@@ -11,7 +11,7 @@ let world = [                                           //World Array
     [2,1,1,1,2,2,2,2,2,2,2,2,2,1,0,1,2],
     [2,1,1,1,2,0,1,0,1,3,0,0,2,1,0,1,2],
     [2,1,1,1,2,0,1,0,1,0,0,0,2,1,0,1,2],
-    [2,1,1,1,2,2,2,2,1,0,2,2,2,1,0,1,2],
+    [2,1,1,1,2,2,2,0,1,0,2,2,2,1,0,1,2],
     [2,1,1,1,1,0,1,0,1,0,0,0,1,1,0,1,2],
     [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2]
 ]
@@ -43,7 +43,7 @@ function displayWorld(){                                //Build World
 
 displayWorld()
 
-var pacmanPosition = {                                      //Pacman coordinates
+let pacmanPosition = {                                      //Pacman coordinates
     x: 1,
     y: 1
 };
@@ -54,6 +54,35 @@ function movePacman(){
 }
 
 movePacman();
+
+let enemies = [
+    {x: 10, y: 10},
+    {x: 11, y: 10},
+    {x: 9, y: 10}
+]
+
+
+function drawEnemy(){
+    let content ="";
+    for (let i = 0; i < enemies.length; i++){
+        content += "<div class = 'ghost'></div>"
+    }
+    document.getElementById("enemy").innerHTML = content
+}
+
+drawEnemy()
+
+let allEnemies = document.querySelectorAll('.ghost')
+console.log(allEnemies)
+
+function positionEnemy(){
+    for (let i = 0; i < allEnemies.length; i++){       
+        allEnemies[i].style.left = enemies[i].x * 30 +"px"
+        allEnemies[i].style.top = enemies[i].y * 30 + "px"
+    }
+}
+
+positionEnemy()
 
 let score = 0
 
