@@ -119,6 +119,10 @@ function moveEnemy(){
                 enemies[i]['y'] += 1;
     
         } 
+
+        if(enemies[i]['y'] == pacmanPosition.y && enemies[i]['x'] == pacmanPosition.x){
+            alert("loser")
+        }
     }
     positionEnemy()
 }
